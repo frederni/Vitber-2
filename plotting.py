@@ -3,8 +3,9 @@ import matplotlib.pyplot as plt
 
 
 def plot_progression(Y, C):
-    for k in range(Y.shape[0]):
-        show_dots(Y[k,:,:],C)
+    plt.figure()
+    for k in range(Y.shape[0]):   #Y.shape = K, 2, I,   Y.shape[0] = K
+        show_dots(Y[k,:,:],C)     #(x,y)-koord. med label
         plt.show()
 
 
@@ -29,9 +30,9 @@ def plot_separation(model, Ys, C, n):
 
 ######## Internals
 
-def show_dots(positions, labels):
+def show_dots(positions, labels):    #(Y0.shape, C)
     '''Visualize the output of get_data_spiral_2d'''
-    plt.scatter(x=positions[0,:], y=positions[1,:], s=1, c=labels, cmap='bwr')
+    plt.scatter(x=positions[0,:], y=positions[1,:], s=1, c=labels, cmap='bwr')  #c=color=label = {1,0}
     plt.axis([-1.2, 1.2, -1.2, 1.2])
     plt.axis('square')
 
@@ -48,10 +49,10 @@ def shading2(x):
     else:
         return 0.5 + np.sqrt(0.25 -(x-1.0)**2)
 
-def get_box(Ys):
-    xmin = min(Ys[0,:])
-    xmax = max(Ys[0,:])
-    xdelta = xmax-xmin
+def get_box(Ys):          #Ys det (s/k)'te laget i Y
+    xmin = min(Ys[0,:])   #Minimumverdi i den 0'te raden
+    xmax = max(Ys[0,:])   #Maksimumsverdi i den 0'te raden
+    xdelta = xmax-xmin    #Dersom xdelta >1 vil punktene øke avstand raskt. Dersom xdelta <1 vil punktene øke avstand saakte. Tilsv. for y
     xmin -= 0.2*xdelta
     xmax += 0.2*xdelta
     ymin = min(Ys[1,:])
