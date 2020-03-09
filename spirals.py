@@ -24,10 +24,10 @@ def get_data_spiral_2d(n_samples=200):
     labels = np.ones((n_samples,1), dtype='bool_')
     labels[m1:] = False
     
-    np.random.seed(0)
+    #np.random.seed(0)
     features = features + .05 * np.random.randn(*features.shape)
     
-    np.random.seed(0)
+    #np.random.seed(0)
     indexes = np.random.permutation(n_samples)
     features = features[:, indexes]
     labels = labels[indexes]
